@@ -1,7 +1,6 @@
 const db = require('../models');
 const Temples = db.temples;
 
-// Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -9,28 +8,27 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a Tutorial
-  const tutorial = new Tutorial({
+  // Create a Temple
+  const temple = new Temple({
     title: 'test',
     description: 'test',
     published: true,
   });
 
-  // Save Tutorial in the database
-  tutorial
-    .save(tutorial)
+  // Save Temple in the database
+  temple
+    .save(temple)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while creating the Tutorial.',
+          err.message || 'Some error occurred while creating the Temple.',
       });
     });
 };
 
-// Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
   Temples.find({})
     .then((data) => {
@@ -38,30 +36,29 @@ exports.findAll = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || 'Some error occurred while retrieving tutorials.',
+        message: err.message || 'Some error occurred while retrieving temples.',
       });
     });
 };
 
-// Find a single Tutorial with an id
+// Find a single Temple with an id
 // exports.findOne = (req, res) => {
 //   const id = req.params.id;
 
-//   Tutorial.findById(id)
+//   Temple.findById(id)
 //     .then((data) => {
 //       if (!data)
-//         res.status(404).send({ message: 'Not found Tutorial with id ' + id });
+//         res.status(404).send({ message: 'Not found Temple with id ' + id });
 //       else res.send(data);
 //     })
 //     .catch((err) => {
 //       res
 //         .status(500)
-//         .send({ message: 'Error retrieving Tutorial with id=' + id });
+//         .send({ message: 'Error retrieving Temple with id=' + id });
 //     });
 // };
 
-// // Update a Tutorial by the id in the request
+// // Update a Temple by the id in the request
 // exports.update = (req, res) => {
 //   if (!req.body) {
 //     return res.status(400).send({
@@ -71,70 +68,70 @@ exports.findAll = (req, res) => {
 
 //   const id = req.params.id;
 
-//   Tutorial.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+//   Temple.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
 //     .then((data) => {
 //       if (!data) {
 //         res.status(404).send({
-//           message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found!`,
+//           message: `Cannot update Temple with id=${id}. Maybe Temple was not found!`,
 //         });
-//       } else res.send({ message: 'Tutorial was updated successfully.' });
+//       } else res.send({ message: 'Temple was updated successfully.' });
 //     })
 //     .catch((err) => {
 //       res.status(500).send({
-//         message: 'Error updating Tutorial with id=' + id,
+//         message: 'Error updating Temple with id=' + id,
 //       });
 //     });
 // };
 
-// // Delete a Tutorial with the specified id in the request
+// // Delete a Temple with the specified id in the request
 // exports.delete = (req, res) => {
 //   const id = req.params.id;
 
-//   Tutorial.findByIdAndRemove(id)
+//   Temple.findByIdAndRemove(id)
 //     .then((data) => {
 //       if (!data) {
 //         res.status(404).send({
-//           message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`,
+//           message: `Cannot delete Temple with id=${id}. Maybe Temple was not found!`,
 //         });
 //       } else {
 //         res.send({
-//           message: 'Tutorial was deleted successfully!',
+//           message: 'Temple was deleted successfully!',
 //         });
 //       }
 //     })
 //     .catch((err) => {
 //       res.status(500).send({
-//         message: 'Could not delete Tutorial with id=' + id,
+//         message: 'Could not delete Temple with id=' + id,
 //       });
 //     });
 // };
 
-// // Delete all Tutorials from the database.
+// // Delete all Temples from the database.
 // exports.deleteAll = (req, res) => {
-//   Tutorial.deleteMany({})
+//   Temple.deleteMany({})
 //     .then((data) => {
 //       res.send({
-//         message: `${data.deletedCount} Tutorials were deleted successfully!`,
+//         message: `${data.deletedCount} Temples were deleted successfully!`,
 //       });
 //     })
 //     .catch((err) => {
 //       res.status(500).send({
 //         message:
-//           err.message || 'Some error occurred while removing all tutorials.',
+//           err.message || 'Some error occurred while removing all temple.',
 //       });
 //     });
 // };
 
-// // Find all published Tutorials
+// // Find all published Temples
 // exports.findAllPublished = (req, res) => {
-//   Tutorial.find({ published: true })
+//   Temple.find({ published: true })
 //     .then((data) => {
 //       res.send(data);
 //     })
 //     .catch((err) => {
 //       res.status(500).send({
 //         message:
-//           err.message || 'Some error occurred while retrieving tutorials.',
+//           err.message || 'Some error occurred while retrieving temple.',
 //       });
 //     });
 // };
