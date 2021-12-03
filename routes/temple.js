@@ -10,7 +10,7 @@ routes.post('/', temples.create);
 // routes.get('/published', temples.findAllPublished);
 
 // Retrieve a single Temple with id
-// routes.get('/:id', temples.findOne);
+routes.get('/:temple_id', temples.findOne);
 
 // Update a Temple with id
 // routes.put('/:id', temples.update);

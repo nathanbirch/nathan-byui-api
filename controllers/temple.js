@@ -30,7 +30,17 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  Temples.find({})
+  Temple.find(
+    {},
+    {
+      temple_id: 1,
+      name: 1,
+      location: 1,
+      dedicated: 1,
+      additionalInfo: 1,
+      _id: 0,
+    }
+  )
     .then((data) => {
       res.send(data);
     })
@@ -42,21 +52,23 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single Temple with an id
-// exports.findOne = (req, res) => {
-//   const id = req.params.id;
+exports.findOne = (req, res) => {
+  const temple_id = req.params.temple_id;
 
-//   Temple.findById(id)
-//     .then((data) => {
-//       if (!data)
-//         res.status(404).send({ message: 'Not found Temple with id ' + id });
-//       else res.send(data);
-//     })
-//     .catch((err) => {
-//       res
-//         .status(500)
-//         .send({ message: 'Error retrieving Temple with id=' + id });
-//     });
-// };
+  Temple.find({ temple_id: temple_id })
+    .then((data) => {
+      if (!data)
+        res
+          .status(404)
+          .send({ message: 'Not found Temple with id ' + temple_id });
+      else res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: 'Error retrieving Temple with temple_id=' + temple_id,
+      });
+    });
+};
 
 // // Update a Temple by the id in the request
 // exports.update = (req, res) => {
