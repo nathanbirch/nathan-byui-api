@@ -1,20 +1,20 @@
 const db = require('../models');
-const Temples = db.temples;
+const Temple = db.temples;
 
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.name) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
 
   // Create a Temple
   const temple = new Temple({
-    title: 'test',
-    description: 'test',
-    published: true,
+    temple_id: req.body.temple_id,
+    name: req.body.name,
+    description: req.body.description,
+    location: req.body.location,
   });
-
   // Save Temple in the database
   temple
     .save(temple)

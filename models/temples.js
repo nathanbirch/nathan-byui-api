@@ -1,11 +1,15 @@
 module.exports = (mongoose) => {
   const Temple = mongoose.model(
     'temples',
-    mongoose.Schema({
-      name: String,
-      location: String,
-      dedicated: String,
-    })
+    mongoose.Schema(
+      {
+        temple_id: Number,
+        name: String,
+        location: String,
+        dedicated: String,
+      },
+      { timestamps: true }
+    )
   );
 
   return Temple;
