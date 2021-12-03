@@ -61,7 +61,7 @@ exports.findOne = (req, res) => {
         res
           .status(404)
           .send({ message: 'Not found Temple with id ' + temple_id });
-      else res.send(data);
+      else res.send(data[0]);
     })
     .catch((err) => {
       res.status(500).send({
