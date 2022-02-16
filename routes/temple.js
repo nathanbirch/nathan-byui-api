@@ -7,7 +7,6 @@ routes.get('/', temples.findAll);
 routes.post('/', temples.create);
 
 // Retrieve all published Temples
-// routes.get('/published', temples.findAllPublished);
 
 // Retrieve a single Temple with id
 routes.get('/:temple_id', temples.findOne);
